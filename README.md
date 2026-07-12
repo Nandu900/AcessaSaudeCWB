@@ -235,8 +235,6 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 Para dúvidas, sugestões ou contribuições, entre em contato:
 - 📧 Email: [fernandopessoasud@gmail.com]
 - 💼 LinkedIn: [https://www.linkedin.com/in/fernando-pessoa-8b563a137/]
-- 🐙 GitHub: [seu-github]
-
 ---
 
 
