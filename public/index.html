@@ -33,13 +33,15 @@
 <body>
   <div id="root"></div>
   <script type="text/babel">
-    const { Home, CalendarDays, ClipboardHeart, MapPin, ChevronRight, Bell, ShieldCheck, AlertTriangle, Clock3 } = lucide;
     const logoUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/acessasaudecwb_logo-rqOPy5xp5PjVHKgVnrzkIw3qMs7ANi.png';
 
     function Icon({ name, size = 20 }) { return <i data-lucide={name} style={{width:size,height:size}} aria-hidden="true" />; }
     function App() {
       const [tela, setTela] = React.useState('home');
       const [loading, setLoading] = React.useState(false);
+      React.useEffect(() => {
+        window.setTimeout(() => window.lucide?.createIcons(), 0);
+      }, [tela, loading]);
       const quickAction = (next) => { setLoading(true); window.setTimeout(() => { setLoading(false); setTela(next); }, 260); };
       return <div className="phone-frame">
         <header className="px-5 pt-5 pb-3 flex items-center justify-between" aria-label="Cabeçalho">
@@ -57,11 +59,10 @@
             <button onClick={() => quickAction('urgencia')} className="w-full rounded-2xl p-4 text-left shadow-lg" style={{background:'#fff0f0',border:'1px solid #f4b6b6',color:'var(--critical)'}}><div className="flex items-center gap-3"><span className="rounded-xl bg-white p-2.5"><Icon name="alert-triangle"/></span><div className="flex-1"><span className="block text-sm font-bold">Urgência e emergência</span><span className="block text-xs mt-1" style={{color:'#7f3030'}}>Em caso de risco, ligue 192 (SAMU)</span></div><Icon name="chevron-right"/></div></button>
           </> : <section className="card p-6"><button onClick={() => setTela('home')} className="mb-6 text-sm font-bold" style={{color:'var(--primary)'}}>← Voltar</button><h2 className="text-2xl font-bold">{tela === 'cadastro' ? 'Novo pré-cadastro' : tela === 'unidades' ? 'Unidades de saúde' : tela === 'acompanhar' ? 'Acompanhar atendimento' : 'Atendimento de urgência'}</h2><p className="mt-3 text-sm leading-relaxed" style={{color:'var(--muted)'}}>Esta tela mantém o fluxo existente do aplicativo. A identidade visual foi atualizada sem alterar as funcionalidades.</p><div className="mt-6 flex items-center gap-3 rounded-xl p-4" style={{background:'#f0f8fa'}}><Icon name="clock-3" size={19}/><span className="text-sm">Dados carregados com segurança.</span></div></section>}
         </main>
-        <nav className="bottom-nav fixed bottom-0 left-1/2 flex w-full max-w-[430px] -translate-x-1/2 justify-around px-3 py-2.5" aria-label="Navegação principal"><button onClick={() => setTela('home')} className="flex flex-col items-center gap-1 rounded-xl px-5 py-1.5 text-xs font-semibold" style={{color:tela === 'home' ? 'var(--primary)' : 'var(--muted)'}}><Icon name="home" size={21}/><span>Início</span></button><button onClick={() => quickAction('cadastro')} className="flex flex-col items-center gap-1 rounded-xl px-5 py-1.5 text-xs font-semibold" style={{color:tela === 'cadastro' ? 'var(--primary)' : 'var(--muted)'}}><Icon icon={ClipboardHeart} size={21}/><span>Pré-cadastro</span></button><button onClick={() => quickAction('unidades')} className="flex flex-col items-center gap-1 rounded-xl px-5 py-1.5 text-xs font-semibold" style={{color:tela === 'unidades' ? 'var(--primary)' : 'var(--muted)'}}><Icon name="map-pin" size={21}/><span>Unidades</span></button></nav>
+        <nav className="bottom-nav fixed bottom-0 left-1/2 flex w-full max-w-[430px] -translate-x-1/2 justify-around px-3 py-2.5" aria-label="Navegação principal"><button onClick={() => setTela('home')} className="flex flex-col items-center gap-1 rounded-xl px-5 py-1.5 text-xs font-semibold" style={{color:tela === 'home' ? 'var(--primary)' : 'var(--muted)'}}><Icon name="home" size={21}/><span>Início</span></button><button onClick={() => quickAction('cadastro')} className="flex flex-col items-center gap-1 rounded-xl px-5 py-1.5 text-xs font-semibold" style={{color:tela === 'cadastro' ? 'var(--primary)' : 'var(--muted)'}}><Icon name="clipboard-heart" size={21}/><span>Pré-cadastro</span></button><button onClick={() => quickAction('unidades')} className="flex flex-col items-center gap-1 rounded-xl px-5 py-1.5 text-xs font-semibold" style={{color:tela === 'unidades' ? 'var(--primary)' : 'var(--muted)'}}><Icon name="map-pin" size={21}/><span>Unidades</span></button></nav>
       </div>;
     }
     ReactDOM.render(<App />, document.getElementById('root'));
-    lucide.createIcons();
   </script>
 </body>
 </html>

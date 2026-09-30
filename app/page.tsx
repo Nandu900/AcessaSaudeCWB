@@ -1,10 +1,10 @@
 export default function HomePage() {
   return (
-    <main className="min-h-screen">
+    <main style={{ minHeight: "100vh", margin: 0 }}>
       <iframe
         src="/index.html"
         title="AcessaSaúdeCWB"
-        className="h-screen w-full border-0"
+        style={{ display: "block", width: "100%", height: "100vh", border: 0 }}
       />
     </main>
   )
